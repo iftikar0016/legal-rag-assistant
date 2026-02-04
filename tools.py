@@ -3,7 +3,8 @@ import streamlit as st
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
-from autogen import AssistantAgent, register_function
+from autogen_agentchat.agents import AssistantAgent
+from autogen_agentchat import register_function
 
 load_dotenv()
 

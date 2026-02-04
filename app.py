@@ -4,7 +4,7 @@ import tempfile
 from dotenv import load_dotenv
 from rag_index_builder import build_index_from_pdf
 from tools import retrieve_legal_context
-from autogen import AssistantAgent, UserProxyAgent
+from autogen_agentchat.agents import AssistantAgent, UserProxyAgent
 
 # Load environment variables (for local development)
 load_dotenv()
