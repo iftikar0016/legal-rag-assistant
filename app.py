@@ -51,7 +51,6 @@ Please provide a clear and accurate answer based on the context above. If the co
                 {"role": "system", "content": "You are a helpful legal assistant that provides accurate answers based on legal documents."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.7,
             max_completion_tokens=1000
         )
         
