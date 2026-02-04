@@ -6,8 +6,8 @@ load_dotenv()
 
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
 
 # Load OpenAI credentials from environment variables
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")

@@ -18,7 +18,7 @@ legal_assistant = AssistantAgent(
             {
                 "api_key": OPENAI_API_KEY,
                 "base_url": OPENAI_BASE_URL,
-                "model": "gpt-4o-mini",  # Set to your preferred OpenAI model
+                "model": "gpt-5-mini",  # Set to your preferred OpenAI model
             }
         ],
         "temperature": 0
