@@ -1,4 +1,8 @@
-import fitz
+try:
+    import fitz
+except ImportError:
+    fitz = None
+
 import os
 
 # Load environment variables (optional for local dev with .env)
@@ -18,6 +22,8 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 OPENAI_BASE_URL = os.environ.get("OPENAI_BASE_URL")
 
 def extract_text_from_pdf(pdf_path:str):
+    if fitz is None:
+        raise ImportError("PyMuPDF (fitz) is not installed. Install it locally to use PDF upload feature.")
     doc = fitz.open(pdf_path)
     text = ""
     for page in doc:

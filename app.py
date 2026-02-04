@@ -12,6 +12,9 @@ try:
 except ImportError:
     pass
 
+# Check if running on Streamlit Cloud (no file access for pdf building)
+IS_STREAMLIT_CLOUD = "STREAMLIT_SERVER_RUN_ON_SAVE" in os.environ or not os.path.exists("rag_index_builder.py")
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")
 

@@ -4,7 +4,6 @@ langchain
 langchain_community
 faiss-cpu
 autogen
-pymupdf
 langchain_openai
 tiktoken
 streamlit
