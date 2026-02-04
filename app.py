@@ -21,7 +21,7 @@ llm_config = {
             "model": "gpt-5-mini",  # Set to your preferred OpenAI model
         }
     ],
-    "temperature": 0
+    "temperature": 1
 }
 
 # Define termination check
