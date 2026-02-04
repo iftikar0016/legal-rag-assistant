@@ -1,13 +1,16 @@
 import streamlit as st
 import os
 import tempfile
-from dotenv import load_dotenv
 from rag_index_builder import build_index_from_pdf
 from tools import retrieve_legal_context
 from autogen import AssistantAgent, UserProxyAgent
 
-# Load environment variables
-load_dotenv()
+# Load environment variables (optional for local dev with .env)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")

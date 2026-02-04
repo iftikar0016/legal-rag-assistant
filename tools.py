@@ -1,10 +1,14 @@
 import os
-from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
 from autogen import AssistantAgent, register_function
 
-load_dotenv()
+# Load environment variables (optional for local dev with .env)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 # Load OpenAI credentials from environment variables
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")

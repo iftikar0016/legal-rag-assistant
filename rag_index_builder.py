@@ -1,8 +1,12 @@
 import fitz
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+# Load environment variables (optional for local dev with .env)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
