@@ -5,8 +5,7 @@ langchain-community
 langchain-openai
 langchain-text-splitters
 faiss-cpu
-pyautogen
+autogen-agentchat
 pymupdf
 tiktoken
 streamlit
-langchain-text-splitters
