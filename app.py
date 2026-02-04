@@ -9,6 +9,7 @@ from autogen_agentchat.ui import Console
 from autogen_agentchat.conditions import TextMentionTermination
 from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_core.tools import FunctionTool
+from autogen_ext.models.openai import OpenAIChatCompletionClient
 
 # Load environment variables (for local development)
 load_dotenv()
@@ -34,17 +35,17 @@ async def run_agent(query):
         description="Retrieve relevant legal context from the indexed legal documents based on the query."
     )
     
+    # Create the model client
+    model_client = OpenAIChatCompletionClient(
+        model="gpt-5-mini",
+        api_key=OPENAI_API_KEY,
+        base_url=OPENAI_BASE_URL,
+    )
+    
     # Create the assistant agent
     legal_assistant = AssistantAgent(
         name="LegalAssistant",
-        model_client={
-            "config_list": [{
-                "model": "gpt-5-mini",
-                "api_key": OPENAI_API_KEY,
-                "base_url": OPENAI_BASE_URL,
-            }],
-            "temperature": 0.7,
-        },
+        model_client=model_client,
         tools=[retrieve_tool],
         system_message="You are a helpful legal assistant that answers user queries by using the 'retrieve_legal_context' tool to find relevant information from legal documents."
     )

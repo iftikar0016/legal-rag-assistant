@@ -6,6 +6,7 @@ langchain-openai
 langchain-text-splitters
 faiss-cpu
 autogen-agentchat
+autogen-ext[openai]
 pymupdf
 tiktoken
 streamlit
