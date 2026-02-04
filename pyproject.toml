@@ -4,4 +4,16 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "openai",
+    "langchain",
+    "langchain-community",
+    "faiss-cpu",
+    "autogen",
+    "pymupdf",
+    "langchain-openai",
+    "tiktoken",
+    "python-dotenv",
+    "streamlit",
+    "langchain-text-splitters",
+]
