@@ -1,8 +1,16 @@
-import fitz
+try:
+    import fitz
+except ImportError:
+    fitz = None
+
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+# Load environment variables (optional for local dev with .env)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 try:
     import streamlit as st
@@ -30,6 +38,8 @@ OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
 OPENAI_BASE_URL = get_secret("OPENAI_BASE_URL")
 
 def extract_text_from_pdf(pdf_path:str):
+    if fitz is None:
+        raise ImportError("PyMuPDF (fitz) is not installed. Install it locally to use PDF upload feature.")
     doc = fitz.open(pdf_path)
     text = ""
     for page in doc:

@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 import tempfile
-from dotenv import load_dotenv
 from rag_index_builder import build_index_from_pdf
 from tools import retrieve_legal_context
 from pyautogen import AssistantAgent, UserProxyAgent

@@ -1,3 +1,4 @@
+python-dotenv
 openai
 langchain
 langchain-community
@@ -7,5 +8,5 @@ faiss-cpu
 pyautogen
 pymupdf
 tiktoken
-python-dotenv
 streamlit
+langchain-text-splitters
