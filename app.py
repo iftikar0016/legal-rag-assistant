@@ -4,13 +4,21 @@ import tempfile
 from dotenv import load_dotenv
 from rag_index_builder import build_index_from_pdf
 from tools import retrieve_legal_context
-from autogen import AssistantAgent, UserProxyAgent
+from pyautogen import AssistantAgent, UserProxyAgent
 
-# Load environment variables
+# Load environment variables (for local development)
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")
+# Support both local .env and Streamlit Cloud secrets
+def get_secret(key: str, default: str = None) -> str:
+    """Get secret from Streamlit secrets or environment variables."""
+    try:
+        return st.secrets[key]
+    except (KeyError, FileNotFoundError):
+        return os.getenv(key, default)
+
+OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
+OPENAI_BASE_URL = get_secret("OPENAI_BASE_URL")
 
 # LLM config
 llm_config = {

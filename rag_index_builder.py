@@ -4,14 +4,30 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+try:
+    import streamlit as st
+    HAS_STREAMLIT = True
+except ImportError:
+    HAS_STREAMLIT = False
+
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 
+# Support both local .env and Streamlit Cloud secrets
+def get_secret(key: str, default: str = None) -> str:
+    """Get secret from Streamlit secrets or environment variables."""
+    if HAS_STREAMLIT:
+        try:
+            return st.secrets[key]
+        except (KeyError, FileNotFoundError):
+            pass
+    return os.getenv(key, default)
+
 # Load OpenAI credentials from environment variables
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-OPENAI_BASE_URL = os.environ.get("OPENAI_BASE_URL")
+OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
+OPENAI_BASE_URL = get_secret("OPENAI_BASE_URL")
 
 def extract_text_from_pdf(pdf_path:str):
     doc = fitz.open(pdf_path)

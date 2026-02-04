@@ -1,10 +1,11 @@
 openai
 langchain
-langchain_community
+langchain-community
+langchain-openai
+langchain-text-splitters
 faiss-cpu
-autogen
+pyautogen
 pymupdf
-langchain_openai
 tiktoken
 python-dotenv
 streamlit

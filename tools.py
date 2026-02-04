@@ -1,14 +1,23 @@
 import os
+import streamlit as st
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
-from autogen import AssistantAgent, register_function
+from pyautogen import AssistantAgent, register_function
 
 load_dotenv()
 
+# Support both local .env and Streamlit Cloud secrets
+def get_secret(key: str, default: str = None) -> str:
+    """Get secret from Streamlit secrets or environment variables."""
+    try:
+        return st.secrets[key]
+    except (KeyError, FileNotFoundError):
+        return os.getenv(key, default)
+
 # Load OpenAI credentials from environment variables
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-OPENAI_BASE_URL = os.environ.get("OPENAI_BASE_URL")
+OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
+OPENAI_BASE_URL = get_secret("OPENAI_BASE_URL")
 
 # Define the assistant agent
 legal_assistant = AssistantAgent(
