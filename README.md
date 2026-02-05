@@ -1,6 +1,6 @@
 # ContractLens — Legal RAG Assistant ⚖️
 
-A portfolio‑ready Retrieval‑Augmented Generation (RAG) app that turns legal PDFs into an interactive question‑answering experience. Upload a contract, build a fast vector index, and get grounded answers backed by relevant document context.
+A Retrieval‑Augmented Generation (RAG) app that turns legal PDFs into an interactive question‑answering experience. Upload a contract, build a fast vector index, and get grounded answers backed by relevant document context.
 
 ---
 
