@@ -91,7 +91,7 @@ OPENAI_BASE_URL = "https://api.openai.com/v1"
 
 ---
 
-## 🧭 Roadmap
+## 🧭 Roadmap for future
 - OCR support for scanned PDFs
 - Multi‑document comparison
 - Exportable answer summaries
